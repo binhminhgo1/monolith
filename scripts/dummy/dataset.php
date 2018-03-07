@@ -22,7 +22,8 @@ class DatasetCommand extends Command
             ->addOption('user', null, InputOption::VALUE_OPTIONAL)
             ->addOption('pass', null, InputOption::VALUE_OPTIONAL)
             ->addOption('output', null, InputOption::VALUE_OPTIONAL)
-            ->addArgument('portal-id', InputArgument::REQUIRED);
+            ->addArgument('portal-id', InputArgument::REQUIRED)
+            ->addUsage("php scripts/dummy/dataset.php main --user='an.hoang@go1.com' --pass='xxxxxx' 500592");
 
         $this->http = new Client(['cookies' => true]);
     }
