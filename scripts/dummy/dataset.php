@@ -9,6 +9,7 @@ use Symfony\Component\Console\Input\InputArgument;
 use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Input\InputOption;
 use Symfony\Component\Console\Output\OutputInterface;
+use Symfony\Component\Console\Question\Question;
 
 class DatasetCommand extends Command
 {
@@ -28,10 +29,25 @@ class DatasetCommand extends Command
         $this->http = new Client(['cookies' => true]);
     }
 
-    private function getJwt(InputInterface $input): string
+    private function getJwt(InputInterface $input, OutputInterface $output): string
     {
         $user = $input->getOption('user');
         $pass = $input->getOption('pass');
+
+        if (!$pass) {
+            $helper = $this->getHelper('question');
+            $question = new Question('Password: ');
+            $question->setHidden(true);
+            $question->setHiddenFallback(false);
+            $pass = $helper->ask($input, $output, $question);
+
+            if (!$pass) {
+                $output->writeln('Password is required.');
+
+                return '';
+            }
+        }
+
         $res = $this->http->post('https://staff-dev.go1.co/user/login', [
             'allow_redirects' => false,
             'form_params'     => [
@@ -48,17 +64,21 @@ class DatasetCommand extends Command
 
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $jwt = $this->getJwt($input);
-        $portalId = $input->getArgument('portal-id');
-        $dir = $input->getOption('output') ?: '/tmp/go1-dataset-' . uniqid();
-        !is_dir($dir) && exec('mkdir -p ' . $dir);
+        if (!$jwt = $this->getJwt($input, $output)) {
+            $output->writeln('Failed to fetch JWT.');
+        }
+        else {
+            $portalId = $input->getArgument('portal-id');
+            $dir = $input->getOption('output') ?: '/tmp/go1-dataset-' . uniqid();
+            !is_dir($dir) && exec('mkdir -p ' . $dir);
 
-        file_put_contents($dir . '/portal.json', $this->dump(__DIR__ . '/dataset/portal.php', $jwt, $portalId));
-        file_put_contents($dir . '/enrolments.json', $this->dump(__DIR__ . '/dataset/accounts.php', $jwt, $portalId));
-        file_put_contents($dir . '/accounts.json', $this->dump(__DIR__ . '/dataset/enrolments.php', $jwt, $portalId));
-        file_put_contents($dir . '/learning-objects.json', $this->dump(__DIR__ . '/dataset/learning-objects.php', $jwt, $portalId));
+            file_put_contents($dir . '/portal.json', $this->dump(__DIR__ . '/dataset/portal.php', $jwt, $portalId));
+            file_put_contents($dir . '/enrolments.json', $this->dump(__DIR__ . '/dataset/accounts.php', $jwt, $portalId));
+            file_put_contents($dir . '/accounts.json', $this->dump(__DIR__ . '/dataset/enrolments.php', $jwt, $portalId));
+            file_put_contents($dir . '/learning-objects.json', $this->dump(__DIR__ . '/dataset/learning-objects.php', $jwt, $portalId));
 
-        $output->writeln("Data is dumped to: {$dir}");
+            $output->writeln("Data is dumped to: {$dir}");
+        }
     }
 
     private function dump($pathToCode, $jwt, $portalId): string
