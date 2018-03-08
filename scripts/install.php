@@ -30,6 +30,9 @@ $databases = $con->getSchemaManager()->listDatabases();
 !in_array('go1_dev', $databases) && $con->getSchemaManager()->createDatabase('go1_dev');
 !in_array('quiz_dev', $databases) && $con->getSchemaManager()->createDatabase('quiz_dev');
 !in_array('scorm_dev', $databases) && $con->getSchemaManager()->createDatabase('scorm_dev');
+!in_array('realtime_dev', $databases) && $con->getSchemaManager()->createDatabase('realtime_dev');
+
+call_user_func(require $pwd . '/scripts/install/realtime/install.php', $c['dbs']['realtime']);
 
 # ---------------------
 # POST $service/install
