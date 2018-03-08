@@ -1,5 +1,28 @@
 version: '2'
 services:
+    realtime:
+        build: ./.data/resources/docker/realtime
+        mem_limit: 64M
+        ports:
+            - '9998:80'
+        environment:
+          - HTTP_PORT=80
+          - APP_STAGE=dev
+          - MYSQL_HOST=mysql
+          - MYSQL_PORT=3306
+          - MYSQL_USERNAME=root
+          - MYSQL_PASSWORD=root
+          - MYSQL_DATABASE=realtime_dev
+          - REDIS_HOST=redis
+          - REDIS_PORT=6379
+          - RABBIT_HOST=queue
+          - RABBIT_PORT=5672
+          - RABBIT_USERNAME=go1
+          - RABBBIT_PASSWORD=go1
+        links:
+            - queue
+            - redis
+            - mysql
     cron:
         build: ./infrastructure/cron
         mem_limit: 64M
@@ -126,6 +149,7 @@ services:
             - es
             - wkhtmltopdf
             - minio
+            - realtime
         extra_hosts:
             - host:${MONOLITH_HOST_IP}
         ports:
@@ -162,6 +186,7 @@ services:
             - SERVICE_URL_PATTERN=http://web/GO1/SERVICE
             - ES_URL=http://es:9200
             - WKHTMLTOPDF_URL=http://wkhtmltopdf
+            - _DOCKER_REALTIME_URL=http://realtime
             # Quiz's environments
             - APP_ENV=monolith
             # Quiz rpc's environments

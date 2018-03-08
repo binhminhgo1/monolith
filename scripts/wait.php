@@ -22,7 +22,8 @@ $c = (new Container)->register(new DoctrineServiceProvider, ['dbs.options' => [
         'driver'        => 'pdo_mysql',
         'driverOptions' => [1002 => 'SET NAMES utf8'],
     ],
-    'core'    => $base + ['dbname' => 'go1_dev'],
+    'core'        => $base + ['dbname' => 'go1_dev'],
+    'realtime'    => $base + ['dbname' => 'realtime_dev'],
 ]]);
 /** @var Connection $con */
 $con = $c['dbs']['install'];
