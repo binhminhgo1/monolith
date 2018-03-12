@@ -30,7 +30,7 @@ function buildComposerJson($pwd, $projects, $baseDir = 'php')
             if (!empty($sub['require'])) {
                 foreach ($sub['require'] as $lib => $version) {
                     if (false === strpos($lib, 'go1/')) {
-                        if (!in_array($lib, ['php', 'phpunit/phpunit', 'microservices/explore']) && version_compare($version, $json['require'][$lib]) > 0) {
+                        if (!in_array($lib, ['php', 'phpunit/phpunit', 'microservices/explore']) && (!isset($json['require'][$lib]) || version_compare($version, $json['require'][$lib]) > 0)) {
                             $json['require'][$lib] = $version;
                         }
                     }

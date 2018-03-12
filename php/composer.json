@@ -373,7 +373,6 @@
         "guzzlehttp/guzzle": "^6.2.0",
         "jasny/iso": "^0.1.0",
         "jfederico/ims-dev": "dev-master",
-        "jonnyw/php-phantomjs": "^4.5",
         "jsq/amazon-es-php": "^0.2.0",
         "ktamas77/firebase-php": "^2.2",
         "league/csv": "^8.1",
