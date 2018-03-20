@@ -399,6 +399,7 @@
         "ralouphie/mimey": "^1.0",
         "ramsey/uuid": "^3.4",
         "rappasoft/laravel-helpers": "dev-master",
+        "robrichards/wse-php": "^2.0",
         "silex/silex": "^2.0.0",
         "silex/web-profiler": "^2.0",
         "slim/slim": "^3.8",
