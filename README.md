@@ -97,8 +97,8 @@ GO1 monolith ![](https://img.shields.io/packagist/php-v/go1/monolith.svg)
 - `php scripts/gitlab/deploy/staging.php`
 - `php scripts/gitlab/deploy/production.php`
 - `php scripts/ecs-ssh.php staging lo-staging` - to configure aws, see [this](http://docs.aws.amazon.com/cli/latest/userguide/cli-chap-getting-started.html)
-- `php scripts/migration/util/fix-namespace.php` - fix namespace errors, because not all microservices come with new
-  version of util library.
+- `php scripts/migration/util/fix-namespace.php` - fix namespace errors, because not all microservices come with new version of util library.
+- `php scripts/pull-web.php` - pull & rebuild latest apiom-ui with specified branch (config in build.json) (**dangerous** it throws away all your uncommitted changes)
 - `php scripts/ecs-ssh.php staging staff-dev` - SSH to #staff-dev ECS.
     - `php scripts/ecs-ssh.php staging api-v3-master` - SSH to #gateway-dev ECS.
 - Dummy: Generate dummy content for testing.
