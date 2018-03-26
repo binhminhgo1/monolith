@@ -112,7 +112,6 @@ services:
             - CONSUMER_index=portal.#,portal-config.#,user.#,lo.#,enrolment.#,ro.#,asm.assignment.#,asm.submission.#,group.#,eck.#,manual-record.#,transaction.#,quiz.user_answer.#,lo_group.#,coupon.#,credit.#,award.#,plan.#,custom-tag.#,activity.#,contract.#,metric.#
             - CONSUMER_lazy=do.#
             - CONSUMER_low=group.#,enrolment.#,lo.create
-            # - CONSUMER_my-team=ro.create,ro.delete,user.update<-index,post_enrolment.#,process.my-team
             - CONSUMER_notify=enrolment.#,user.#,user-email.#,note.#,ro.#,award.#,plan.#,asm.#,lo.#,group.#,portal.#
             - CONSUMER_oembed=lo.update
             - CONSUMER_quiz-rpc=user.update,enrolment.delete
