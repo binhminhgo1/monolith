@@ -60,6 +60,7 @@ return [
         'report-data'    => 'git@code.go1.com.au:microservices/report-data.git',
         'rules'          => 'git@code.go1.com.au:microservices/rules.git',
         's3'             => 'git@code.go1.com.au:microservices/s3.git',
+        'scheduler'      => 'git@code.go1.com.au:microservices/scheduler.git',
         'scorm'          => 'git@code.go1.com.au:microservices/scorm.git',
         'scraping'       => 'git@code.go1.com.au:microservices/scraping.git',
         'share'          => 'git@code.go1.com.au:microservices/share.git',

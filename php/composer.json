@@ -276,6 +276,10 @@
                 "./s3",
                 "/app/s3"
             ],
+            "go1\\scheduler\\": [
+                "./scheduler",
+                "/app/scheduler"
+            ],
             "go1\\scorm\\": [
                 "./scorm",
                 "/app/scorm"
@@ -383,7 +387,7 @@
         "microsoft/microsoft-graph": "^1.0",
         "mikemccabe/json-patch-php": "^0.1.0",
         "monolog/monolog": "^1.21",
-        "mtdowling/cron-expression": "^v1.0",
+        "mtdowling/cron-expression": "^1.2",
         "mustangostang/spyc": "0.5.1",
         "neomerx/json-api": "^0.8.6",
         "nesbot/carbon": "^1.21",
