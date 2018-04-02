@@ -184,6 +184,10 @@
                 "./launcher",
                 "/app/launcher"
             ],
+            "go1\\marketplace\\": [
+                "./marketplace",
+                "/app/marketplace"
+            ],
             "go1\\lib\\": [
                 "./lib",
                 "/app/lib"
