@@ -117,6 +117,7 @@ services:
             - CONSUMER_oembed=lo.update
             - CONSUMER_quiz-rpc=user.update,enrolment.delete
             - CONSUMER_rules=portal.#,user.#,lo.#,enrolment.#,system.#
+            - CONSUMER_migration=migration.#
             - CONSUMER_scraping=scraping.#
             - CONSUMER_social=lo.delete,user.delete
             - CONSUMER_support=portal.update,portal.delete,user.update,user.delete
