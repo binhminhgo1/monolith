@@ -184,10 +184,6 @@
                 "./launcher",
                 "/app/launcher"
             ],
-            "go1\\marketplace\\": [
-                "./marketplace",
-                "/app/marketplace"
-            ],
             "go1\\lib\\": [
                 "./lib",
                 "/app/lib"
@@ -207,6 +203,10 @@
             "go1\\mail\\": [
                 "./mail",
                 "/app/mail"
+            ],
+            "go1\\marketplace\\": [
+                "./marketplace",
+                "/app/marketplace"
             ],
             "go1\\middleware\\": [
                 "./libraries/middleware",

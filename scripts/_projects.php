@@ -44,6 +44,7 @@ return [
         'low'            => 'git@code.go1.com.au:microservices/low.git',
         'lti-consumer'   => 'git@code.go1.com.au:microservices/lti-consumer.git',
         'mail'           => 'git@code.go1.com.au:microservices/mail.git',
+        'marketplace'    => 'git@code.go1.com.au:microservices/marketplace.git',
         'mbosi-export'   => 'git@code.go1.com.au:microservices/mbosi-export.git',
         'migration'      => 'git@code.go1.com.au:microservices/migration.git',
         'my-team'        => 'git@code.go1.com.au:microservices/my-team.git',
